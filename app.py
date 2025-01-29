@@ -15,9 +15,9 @@ def ask_ollama():
     if not data or 'prompt' not in data:
         return jsonify({"error": "Missing 'prompt' in request"}), 400
 
-
+    # Send request to Ollama's local API
     ollama_response = requests.post(OLLAMA_API_URL, json={
-        "model": "mistral",
+        "model": "mistral", 
         "prompt": data['prompt'],
         "stream": False
     })
