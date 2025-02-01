@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify
 import requests
 
 app = Flask(__name__)
-
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
+
+
+
 
 @app.route('/ask', methods=['POST'])
 def ask_ollama():
@@ -15,7 +17,7 @@ def ask_ollama():
     if not data or 'prompt' not in data:
         return jsonify({"error": "Missing 'prompt' in request"}), 400
 
-    # Send request to Ollama's local API
+   
     ollama_response = requests.post(OLLAMA_API_URL, json={
         "model": "mistral", 
         "prompt": data['prompt'],
@@ -29,4 +31,4 @@ def ask_ollama():
         return jsonify({"error": "Failed to communicate with Ollama"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=8080, debug=True)
