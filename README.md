@@ -10,7 +10,7 @@ This microservice is a Flask-based API that interacts with an **Ollama Large Lan
 
 By default, Flask runs on **port 5000**, but on macOS, **port 5000 is reserved (possibly for AirDrop)**, which may cause conflicts. To avoid this, the API runs on **port 8080**.
 
-## **📦 Running the Microservice**
+## ** Running the Microservice**
 
 ### \*\*Option 1: Using Docker
 
