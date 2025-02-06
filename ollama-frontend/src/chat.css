@@ -1,3 +1,20 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Centering the entire chat component */
+.chat-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f7f6;
+}
+
+/* Chat container styling */
 .chat-container {
   width: 350px;
   max-width: 90%;
@@ -8,6 +25,7 @@
   font-family: Arial, sans-serif;
 }
 
+/* Header styling */
 .chat-header {
   background: #d32f2f;
   color: white;
@@ -30,7 +48,7 @@
   color: #d1f7c4;
 }
 
-/* Chat Messages */
+/* Chat Messages styling */
 .chat-box {
   padding: 10px;
   height: 400px;
@@ -58,6 +76,15 @@
   max-width: 75%;
 }
 
+/* Loading text styling */
+.loading-text {
+  font-size: 14px;
+  color: gray;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Input and button container styling */
 .input-container {
   display: flex;
   padding: 8px;

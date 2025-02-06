@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./chat.css";
+
 const Chat = () => {
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState([]);
@@ -33,44 +34,44 @@ const Chat = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-header">
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img src="./" alt="Support" />
-          <div>
-            <div>How can we help?</div>
-            <div className="status">Ollama microservice!</div>
+    <div className="chat-wrapper">
+      <div className="chat-container">
+        <div className="chat-header">
+          <div className="header-content">
+            <img src="./" alt="Support" />
+            <div>
+              <div>How can we help?</div>
+              <div className="status">Ollama microservice!</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={msg.role === "user" ? "user-message" : "bot-message"}
-          >
-            <strong>{msg.role === "user" ? "You: " : "Ollama: "}</strong>{" "}
-            {msg.text}
-          </div>
-        ))}
-        {loading && (
-          <p style={{ color: "gray", marginLeft: "10px" }}>
-            Ollama is thinking...
-          </p>
-        )}
-      </div>
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={msg.role === "user" ? "user-message" : "bot-message"}
+            >
+              <strong>{msg.role === "user" ? "You: " : "Ollama: "}</strong>
+              {msg.text}
+            </div>
+          ))}
+          {loading && (
+            <p className="loading-text">Ollama is thinking...</p>
+          )}
+        </div>
 
-      <div className="input-container">
-        <input
-          type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Type your message here..."
-        />
-        <button onClick={handleSend} disabled={loading}>
-          {loading ? "Sending..." : "➤"}
-        </button>
+        <div className="input-container">
+          <input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Type your message here..."
+          />
+          <button onClick={handleSend} disabled={loading}>
+            {loading ? "Sending..." : "➤"}
+          </button>
+        </div>
       </div>
     </div>
   );
