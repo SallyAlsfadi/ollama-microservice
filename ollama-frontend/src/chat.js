@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./chat.css";
-
 const Chat = () => {
   const [prompt, setPrompt] = useState("");
   const [messages, setMessages] = useState([]);
@@ -35,25 +34,42 @@ const Chat = () => {
 
   return (
     <div className="chat-container">
-      <h2>Ollama Chat</h2>
+      <div className="chat-header">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img src="./" alt="Support" />
+          <div>
+            <div>How can we help?</div>
+            <div className="status">Ollama microservice!</div>
+          </div>
+        </div>
+      </div>
+
       <div className="chat-box">
         {messages.map((msg, index) => (
-          <div key={index} className={`message ${msg.role}-message`}>
-            <strong>{msg.role === "user" ? "You:" : "Ollama:"}</strong>{" "}
+          <div
+            key={index}
+            className={msg.role === "user" ? "user-message" : "bot-message"}
+          >
+            <strong>{msg.role === "user" ? "You: " : "Ollama: "}</strong>{" "}
             {msg.text}
           </div>
         ))}
-        {loading && <p className="loading">Ollama is thinking...</p>}
+        {loading && (
+          <p style={{ color: "gray", marginLeft: "10px" }}>
+            Ollama is thinking...
+          </p>
+        )}
       </div>
+
       <div className="input-container">
         <input
           type="text"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Type your message..."
+          placeholder="Type your message here..."
         />
         <button onClick={handleSend} disabled={loading}>
-          {loading ? "Sending..." : "Send"}
+          {loading ? "Sending..." : "➤"}
         </button>
       </div>
     </div>
