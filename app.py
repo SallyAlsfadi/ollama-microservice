@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 import requests
 
 app = Flask(__name__)
-OLLAMA_API_URL = "http://localhost:11434/api/generate"
+OLLAMA_API_URL = "http://host.docker.internal:11434/api/generate"
+
+
 
 
 
