@@ -1,13 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Import CORS
 import requests
 
 app = Flask(__name__)
+CORS(app, resources={r"/ask": {"origins": "*"}})  
+
 OLLAMA_API_URL = "http://host.docker.internal:11434/api/generate"
-
-
-
-
-
 
 @app.route('/ask', methods=['POST'])
 def ask_ollama():
@@ -19,9 +17,8 @@ def ask_ollama():
     if not data or 'prompt' not in data:
         return jsonify({"error": "Missing 'prompt' in request"}), 400
 
-   
     ollama_response = requests.post(OLLAMA_API_URL, json={
-        "model": "mistral", 
+        "model": "mistral",
         "prompt": data['prompt'],
         "stream": False
     })
