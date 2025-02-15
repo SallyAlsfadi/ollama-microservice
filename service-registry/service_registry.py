@@ -60,4 +60,4 @@ def cleanup_services():
 threading.Thread(target=cleanup_services, daemon=True).start()
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5050, debug=True)
