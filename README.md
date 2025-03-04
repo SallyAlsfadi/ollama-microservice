@@ -1,28 +1,41 @@
-# **Ollama Microservice**
+# Ollama Microservice
 
-This microservice is a Flask-based API that interacts with an **Ollama Large Language Model (LLM)**. It receives a prompt via a `POST` request and returns a generated response.
+This project is a Flask-based microservice that interacts with a locally installed **Ollama LLM**. It is fully containerized using **Docker**.
 
-### **Prerequisites**
+---
 
-- **Ollama LLM Server** (running on `http://localhost:11434`)
+## ** How to Run This Project**
 
-### **Why Port 8080?**
+Follow these steps to set up and run the microservice.
 
-By default, Flask runs on **port 5000**, but on macOS, **port 5000 is reserved (possibly for AirDrop)**, which may cause conflicts. To avoid this, the API runs on **port 8080**.
+### **1️⃣ Prerequisites**
 
-## ** Running the Microservice**
+- Install **Ollama**: [Download Ollama](https://ollama.ai/download)
+- Install **Docker**: [Download Docker](https://www.docker.com/products/docker-desktop)
 
-### \*\*Option 1: Using Docker
+---
 
-1. **Build the Docker Image**:
-   ```bash
-   docker build -t flask-ollama .
-   ```
+### ** Running Ollama Locally**
 
-Run the Docker Container:
-docker run -p 8080:8080 flask-ollama
+Ensure that **Ollama is installed and running** before starting the Flask app.
 
-using Postman :
-Endpoint: POST /ask : Sends a prompt to the Ollama LLM and retrieves the response.
-URL: http://localhost:8080/ask
-Body: (raw JSON) : any prompt you want
+Check if Ollama is installed:
+
+```bash
+ollama list
+
+
+Start with ollama : ollama run mistral to make sure it's running
+
+
+docker build -t ollama-microservice .
+docker run -p 8080:8080 ollama-microservice
+
+in the posman to test it use : curl -X POST http://localhost:8080/ask -H "Content-Type: application/json" -d '{
+  "prompt": "Tell me a joke."
+}'
+
+
+
+Ensure Flask is using host.docker.internal inside app.py: OLLAMA_API_URL = "http://host.docker.internal:11434/api/generate"
+```
