@@ -6,7 +6,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Update the URL to connect directly to the locally installed Ollama LLM
-OLLAMA_API_URL = "http://localhost:11434/api/generate"
+#OLLAMA_API_URL = "http://localhost:11434/api/generate" # only without docker
+OLLAMA_API_URL = "http://host.docker.internal:11434/api/generate" #with docker
+ 
 
 @app.route('/ask', methods=['POST'])
 def ask_ollama():
@@ -24,7 +26,7 @@ def ask_ollama():
             "model": "mistral",  # Change this to another model if needed
             "prompt": data['prompt'],
             "stream": False
-        }, timeout=30)
+        }, timeout=50)
 
         if ollama_response.status_code == 200:
             result = ollama_response.json()
