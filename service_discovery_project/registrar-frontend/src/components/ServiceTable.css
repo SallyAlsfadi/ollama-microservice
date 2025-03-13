@@ -1,0 +1,73 @@
+/* Container for the entire table */
+.service-table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Title style */
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Button style */
+  .refresh-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .refresh-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  /* Table styling */
+  .service-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .service-table th, .service-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .service-table th {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  .service-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Status styles */
+  .status-online {
+    color: green;
+  }
+  
+  .status-offline {
+    color: red;
+  }
+  
+  /* No services available */
+  .no-services {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+  }
+  

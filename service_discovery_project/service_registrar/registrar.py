@@ -1,9 +1,20 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import time
 import threading
 import requests
 
 app = FastAPI()
+
+# Enable CORS for all origins (you can restrict this to specific origins if needed)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can specify a list of allowed domains instead of "*" for more security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 services = {}
 
 @app.post("/register")

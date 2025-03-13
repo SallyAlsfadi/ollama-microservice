@@ -1,7 +1,7 @@
 import requests
 
 
-SERVICE_REGISTRAR_URL = "http://192.168.2.62:8000"
+SERVICE_REGISTRAR_URL = "http://172.21.80.1:8000"
 
 def get_services():
 
@@ -11,10 +11,10 @@ def get_services():
 def send_message(to_service, message):
     
     response = requests.post(f"{SERVICE_REGISTRAR_URL}/forward", 
-                             params={"from_service": "device_a_client", 
+                             params={"from_service": "Badal's Microservice", 
                                      "to_service": to_service, 
                                      "message": message})
     print("Response:", response.json())
 
 get_services()
-send_message("device_b_service", "Hello from Device A!")
+send_message("Shubhangi's Microservice", "Hello from Badal's Service !")
