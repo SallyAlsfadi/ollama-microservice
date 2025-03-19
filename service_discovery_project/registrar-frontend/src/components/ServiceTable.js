@@ -53,7 +53,6 @@ const ServiceTable = () => {
               <tr key={index}>
                 <td>{service.name}</td>
                 <td>{service.address}</td>
-                <td>{service.status || "Unknown"}</td>
               </tr>
             ))
           ) : (
