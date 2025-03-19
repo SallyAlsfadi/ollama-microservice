@@ -1,0 +1,26 @@
+.receiver-container {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .notification {
+    background-color: yellow;
+    color: black;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #f4f4f4;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
